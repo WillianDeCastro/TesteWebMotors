@@ -1,0 +1,147 @@
+<div style="text-align:center">
+  <h1>
+    Meus Anúncios
+  </h1>
+
+  <p>
+    <button
+      id="btnAddAdv"
+      class="btn btn-primary"
+      (click)="startAddAdvertisement()"
+    >
+      Adicionar anúncio
+    </button>
+  </p>
+
+  <div *ngIf="isCreateMode">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label class="label">Marca</label>
+          <input
+            type="text"
+            [(ngModel)]="advertisement.marca"
+            class="form-control"
+            id="Marca"
+          />
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label class="label" for="Modelo">Modelo</label>
+          <input
+            class="form-control"
+            type="text"
+            id="Modelo"
+            name="Modelo"
+            [(ngModel)]="advertisement.modelo"
+            value=""
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label class="label" for="Versao">Versao</label>
+          <input
+            [(ngModel)]="advertisement.versao"
+            class="form-control"
+            type="text"
+            id="Versao"
+            name="Versao"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label class="label" for="Ano">Ano</label>
+          <input
+            [(ngModel)]="advertisement.ano"
+            class="form-control"
+            type="number"
+            data-val="true"
+            data-val-required="The Ano field is required."
+            id="Ano"
+            name="Ano"
+            value=""
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label class="label" for="Quilometragem">Quilometragem</label>
+          <input
+            [(ngModel)]="advertisement.quilometragem"
+            class="form-control"
+            type="number"
+            data-val="true"
+            data-val-required="The Quilometragem field is required."
+            id="Quilometragem"
+            name="Quilometragem"
+            value=""
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label class="label" for="Observacao">Observacao</label>
+          <input
+            [(ngModel)]="advertisement.observacao"
+            class="form-control"
+            type="text"
+            id="Observacao"
+            name="Observacao"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button
+          (click)="addAdvertisement()"
+          type="button"
+          class="btn btn-primary btn-lg btn-block"
+        >
+          Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!isCreateMode">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Marca</th>
+          <th scope="col">Modelo</th>
+          <th scope="col">Versao</th>
+          <th scope="col">Ano</th>
+          <th scope="col">Km</th>
+          <th scope="col">Obs</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let adv of lstAdvertisement">
+          <td>{{ adv.marca }}</td>
+          <td>{{ adv.modelo }}</td>
+          <td>{{ adv.versao }}</td>
+          <td>{{ adv.ano }}</td>
+          <td>{{ adv.quilometragem }}</td>
+          <td>{{ adv.observacao }}</td>
+          <td>
+            <a title="Excluir" (click)="removeAdvertisement(adv.id)">
+              <i class="far fa-trash-alt"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
